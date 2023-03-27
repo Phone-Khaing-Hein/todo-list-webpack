@@ -2,6 +2,8 @@ import './style.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../node_modules/bootstrap-icons/font/bootstrap-icons.css';
 
+const listForm = document.getElementById('todoList');
+
 const list = [
   {
     description: 'wash the dishes',
@@ -16,8 +18,6 @@ const list = [
 ];
 
 const showList = (list) => {
-  const listForm = document.getElementById('todoList');
-
   list
     .sort((a, b) => a.index - b.index)
     .forEach((l) => {
@@ -27,9 +27,11 @@ const showList = (list) => {
             <input type="checkbox" class="form-check-input" id="${l.index}" ${l.completed ? 'checked' : ''} />
             <input maxlength="255" class="custom-input" value="${l.description}">
           </div>
-          <i class="bi bi-three-dots-vertical"></i>
+          <i class="bi bi-three-dots-vertical cursor-pointer"></i>
         </li>`;
     });
 };
 
 showList(list);
+
+listForm.innerHTML += '<li class="list-group-item text-center bg-light cursor-pointer">Clear All Complete</li>';

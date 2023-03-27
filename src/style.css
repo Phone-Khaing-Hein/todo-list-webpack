@@ -16,3 +16,7 @@ body {
 .custom-input:focus {
   outline: none;
 }
+
+.cursor-pointer {
+  cursor: pointer;
+}
