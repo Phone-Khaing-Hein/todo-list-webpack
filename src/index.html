@@ -4,11 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wbpack Exercise</title>
+    <title>Todo List</title>
 </head>
 
-<body>
-    <h1>Hello webpack!</h1>
+<body class="bg-light">
+    <ul id="todoList" class="list-group shadow">
+        <li class="list-group-item d-flex align-items-center justify-content-between">
+            Today's To Do <i class="bi bi-arrow-clockwise"></i>
+        </li>
+        <li class="list-group-item d-flex align-items-start justify-content-between">
+            <input type="text" class="custom-input" placeholder="Add your list...">
+            <i class="bi bi-arrow-return-left"></i>
+        </li>
+    </ul>
 </body>
 
 </html>
