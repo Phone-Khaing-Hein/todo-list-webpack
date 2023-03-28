@@ -22,7 +22,7 @@ const showList = (list) => {
     .sort((a, b) => a.index - b.index)
     .forEach((l) => {
       listForm.innerHTML += `
-        <li for="${l.index}" class="list-group-item d-flex align-items-center justify-content-between" id="list${l.index}">
+        <li for="${l.index}" class="list-group-item d-flex align-items-center justify-content-between p-3" id="list${l.index}">
           <div class="d-flex align-items-center gap-3">
             <input type="checkbox" class="form-check-input" id="${l.index}" ${l.completed ? 'checked' : ''} />
             <input maxlength="255" class="custom-input" value="${l.description}">
@@ -34,4 +34,4 @@ const showList = (list) => {
 
 showList(list);
 
-listForm.innerHTML += '<li class="list-group-item text-center bg-light cursor-pointer">Clear All Complete</li>';
+listForm.innerHTML += '<li class="list-group-item text-center bg-light cursor-pointer p-3">Clear All Complete</li>';
