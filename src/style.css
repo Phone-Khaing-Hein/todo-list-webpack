@@ -1,3 +1,22 @@
 body {
-  background-color: bisque;
+  display: flex;
+  justify-content: center;
+}
+
+#todoList {
+  margin-top: 100px;
+  width: 45%;
+}
+
+.custom-input {
+  border: none;
+  width: 90%;
+}
+
+.custom-input:focus {
+  outline: none;
+}
+
+.cursor-pointer {
+  cursor: pointer;
 }
