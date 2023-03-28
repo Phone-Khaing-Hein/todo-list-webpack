@@ -56,7 +56,7 @@ To Do List is an app to implement pure javascript ES6 and webpack. You can add, 
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- [Live Demo Link](https://rimuru-tempest-26.github.io/Awesome-Books-ES6/)
+- [Live Demo Link](https://rimuru-tempest-26.github.io/todo-list-webpack/dist/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
