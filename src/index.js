@@ -1,6 +1,6 @@
 import './style.css';
 import {
-  addbook, removeBook, showList, initUI,
+  addbook, showList, initUI,
 } from './task.js';
 
 initUI();
