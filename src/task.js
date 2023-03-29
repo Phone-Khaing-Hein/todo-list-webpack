@@ -1,4 +1,6 @@
 const initUI = () => {
+  const test = document.getElementById('test');
+  test.remove();
   const body = document.getElementsByTagName('body')[0];
   const ul = document.createElement('ul');
   ul.classList = 'list-group shadow';
@@ -107,14 +109,16 @@ const showList = () => {
 
 const addbook = (todo) => {
   const list = JSON.parse(localStorage.getItem('todos')) || [];
-  const task = {
-    description: todo,
-    completed: false,
-    index: list.length + 1,
-  };
-  list.push(task);
-  localStorage.setItem('todos', JSON.stringify(list));
-  showList(list);
+  if (todo.trim().length !== 0) {
+    const task = {
+      description: todo.trim(),
+      completed: false,
+      index: list.length + 1,
+    };
+    list.push(task);
+    localStorage.setItem('todos', JSON.stringify(list));
+    showList(list);
+  }
 };
 
 export {
