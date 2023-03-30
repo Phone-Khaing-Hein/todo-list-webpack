@@ -1,6 +1,6 @@
 import './style.css';
 import {
-  addbook, showList, initUI,
+  addbook, showList, initUI, clearCompleted
 } from './task.js';
 
 initUI();
@@ -18,6 +18,10 @@ taskInput.addEventListener('keypress', (e) => {
     addbook(document.getElementById('task').value);
     document.getElementById('task').value = '';
   }
+});
+
+document.getElementById('clearCompleted').addEventListener('click', () => {
+  clearCompleted();
 });
 
 showList();
