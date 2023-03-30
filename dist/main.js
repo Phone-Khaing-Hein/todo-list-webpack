@@ -1,3 +1,4 @@
+"use strict";
 /*
  * ATTENTION: The "eval" devtool has been used (maybe by default in mode: "development").
  * This devtool is neither made for production nor for readable output files.
@@ -6,9 +7,7 @@
  * or disable the default devtool with "devtool: false".
  * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
  */
-/******/ (() => { // webpackBootstrap
-/******/ 	"use strict";
-/******/ 	var __webpack_modules__ = ({
+(self["webpackChunkwebpack_setup"] = self["webpackChunkwebpack_setup"] || []).push([["main"],{
 
 /***/ "./node_modules/css-loader/dist/cjs.js!./src/style.css":
 /*!*************************************************************!*\
@@ -116,7 +115,17 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _task_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./task.js */ \"./src/task.js\");\n\r\n\r\n\r\n(0,_task_js__WEBPACK_IMPORTED_MODULE_1__.initUI)();\r\n\r\nconst addBtn = document.getElementById('add');\r\nconst taskInput = document.getElementById('task');\r\n\r\naddBtn.addEventListener('click', () => {\r\n  (0,_task_js__WEBPACK_IMPORTED_MODULE_1__.addbook)(document.getElementById('task').value);\r\n  document.getElementById('task').value = '';\r\n});\r\n\r\ntaskInput.addEventListener('keypress', (e) => {\r\n  if (e.key === 'Enter') {\r\n    (0,_task_js__WEBPACK_IMPORTED_MODULE_1__.addbook)(document.getElementById('task').value);\r\n    document.getElementById('task').value = '';\r\n  }\r\n});\r\n\r\n(0,_task_js__WEBPACK_IMPORTED_MODULE_1__.showList)();\r\n\n\n//# sourceURL=webpack://webpack_setup/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _task_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./task.js */ \"./src/task.js\");\n\r\n\r\n\r\n(0,_task_js__WEBPACK_IMPORTED_MODULE_1__.initUI)();\r\n\r\nconst addBtn = document.getElementById('add');\r\nconst taskInput = document.getElementById('task');\r\n\r\naddBtn.addEventListener('click', () => {\r\n  (0,_task_js__WEBPACK_IMPORTED_MODULE_1__.addbook)(document.getElementById('task').value);\r\n  document.getElementById('task').value = '';\r\n});\r\n\r\ntaskInput.addEventListener('keypress', (e) => {\r\n  if (e.key === 'Enter') {\r\n    (0,_task_js__WEBPACK_IMPORTED_MODULE_1__.addbook)(document.getElementById('task').value);\r\n    document.getElementById('task').value = '';\r\n  }\r\n});\r\n\r\ndocument.getElementById('clearCompleted').addEventListener('click', () => {\r\n  (0,_task_js__WEBPACK_IMPORTED_MODULE_1__.clearCompleted)();\r\n});\r\n\r\n(0,_task_js__WEBPACK_IMPORTED_MODULE_1__.showList)();\r\n\n\n//# sourceURL=webpack://webpack_setup/./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/status.js":
+/*!***********************!*\
+  !*** ./src/status.js ***!
+  \***********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst changeStatus = (id, checkboxElement, editElement) => {\r\n  const list = JSON.parse(localStorage.getItem('todos')) || [];\r\n  if (checkboxElement.hasAttribute('checked')) {\r\n    checkboxElement.checked = false;\r\n    list[id].completed = false;\r\n    localStorage.setItem('todos', JSON.stringify(list));\r\n    editElement.removeAttribute('style');\r\n    checkboxElement.removeAttribute('checked');\r\n  } else {\r\n    checkboxElement.checked = true;\r\n    list[id].completed = true;\r\n    localStorage.setItem('todos', JSON.stringify(list));\r\n    editElement.style = 'text-decoration: line-through;';\r\n    checkboxElement.setAttribute('checked', true);\r\n  }\r\n};\r\n\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (changeStatus);\r\n\n\n//# sourceURL=webpack://webpack_setup/./src/status.js?");
 
 /***/ }),
 
@@ -126,88 +135,13 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _sty
   \*********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"addbook\": () => (/* binding */ addbook),\n/* harmony export */   \"initUI\": () => (/* binding */ initUI),\n/* harmony export */   \"showList\": () => (/* binding */ showList)\n/* harmony export */ });\nconst initUI = () => {\r\n  const body = document.getElementsByTagName('body')[0];\r\n  const ul = document.createElement('ul');\r\n  ul.classList = 'list-group shadow';\r\n  ul.id = 'todoList';\r\n  const li1 = document.createElement('li');\r\n  li1.classList = 'list-group-item d-flex align-items-center justify-content-between p-3';\r\n  const span = document.createElement('span');\r\n  span.innerHTML = \"Today's To Do\";\r\n  const rotate = document.createElement('i');\r\n  rotate.classList = 'fa-solid fa-rotate fa-lg cursor-pointer';\r\n  rotate.style = 'color: #000000;';\r\n  li1.appendChild(span);\r\n  li1.appendChild(rotate);\r\n  const li2 = document.createElement('li');\r\n  li2.classList = 'list-group-item d-flex align-items-start justify-content-between p-3';\r\n  const input = document.createElement('input');\r\n  input.type = 'text';\r\n  input.id = 'task';\r\n  input.classList = 'custom-input';\r\n  input.placeholder = 'Add your list ...';\r\n  li2.appendChild(input);\r\n  const addBtn = document.createElement('i');\r\n  addBtn.classList = 'fa-solid fa-arrow-turn-down fa-rotate-90 cursor-pointer';\r\n  addBtn.style = 'color: #000000;';\r\n  addBtn.id = 'add';\r\n  const parentDiv = document.createElement('div');\r\n  parentDiv.id = 'taskList';\r\n  li2.appendChild(addBtn);\r\n  ul.appendChild(li1);\r\n  ul.appendChild(li2);\r\n  ul.appendChild(parentDiv);\r\n  body.appendChild(ul);\r\n  const listForm = document.getElementById('todoList');\r\n  const completeBtn = document.createElement('li');\r\n  completeBtn.classList = 'list-group-item text-center bg-light cursor-pointer p-3';\r\n  completeBtn.innerHTML = 'Clear All Complete';\r\n  listForm.appendChild(completeBtn);\r\n};\r\n\r\nconst resetIndex = (list) => {\r\n  for (let i = 0; i < list.length; i += 1) {\r\n    list[i].index = i + 1;\r\n  }\r\n};\r\n\r\nconst showList = () => {\r\n  const list = JSON.parse(localStorage.getItem('todos')) || [];\r\n  const parentDiv = document.getElementById('taskList');\r\n  parentDiv.innerHTML = '';\r\n  list\r\n    .sort((a, b) => a.index - b.index)\r\n    .forEach((l) => {\r\n      const li3 = document.createElement('li');\r\n      li3.classList = 'list-group-item d-flex align-items-center justify-content-between p-3';\r\n      li3.id = `list${l.index}`;\r\n      const div = document.createElement('div');\r\n      div.classList = 'd-flex align-items-center gap-3';\r\n      const input = document.createElement('input');\r\n      input.type = 'checkbox';\r\n      input.classList = 'form-check-input';\r\n      input.id = l.index;\r\n      input.setAttribute('selected', l.completed);\r\n      div.appendChild(input);\r\n      const input2 = document.createElement('input');\r\n      input2.maxLength = 255;\r\n      input2.classList = 'custom-input';\r\n      input2.id = `edit${l.index}`;\r\n      input2.setAttribute('value', l.description);\r\n      div.appendChild(input2);\r\n      li3.appendChild(div);\r\n      const icon = document.createElement('i');\r\n      icon.classList = 'fas fa-ellipsis-v vertical-icon cursor-pointer';\r\n      icon.id = `dropdownMenuButton${l.index}`;\r\n      icon.setAttribute('data-bs-toggle', 'dropdown');\r\n      icon.setAttribute('aria-expanded', 'false');\r\n      const dropdown = document.createElement('ul');\r\n      dropdown.classList = 'dropdown-menu';\r\n      dropdown.setAttribute('aria-labelledby', `dropdownMenuButton${l.index}`);\r\n      const dropList = document.createElement('li');\r\n      dropList.classList = 'dropdown-item fa-regular fa-trash-can';\r\n      dropList.style = 'color: #000000;';\r\n      dropList.id = `remove${l.index}`;\r\n      dropdown.appendChild(dropList);\r\n      li3.appendChild(icon);\r\n      li3.appendChild(dropdown);\r\n      parentDiv.appendChild(li3);\r\n    });\r\n\r\n  list.forEach((l) => {\r\n    document.getElementById(`remove${l.index}`).addEventListener('click', () => {\r\n      list.splice(list.indexOf(l), 1);\r\n      resetIndex(list);\r\n      localStorage.setItem('todos', JSON.stringify(list));\r\n      showList(list);\r\n    });\r\n  });\r\n\r\n  list.forEach((l) => {\r\n    document.getElementById(`edit${l.index}`).addEventListener('change', (e) => {\r\n      list[list.indexOf(l)] = { ...l, description: e.target.value };\r\n      localStorage.setItem('todos', JSON.stringify(list));\r\n      showList(list);\r\n    });\r\n  });\r\n};\r\n\r\nconst addbook = (todo) => {\r\n  const list = JSON.parse(localStorage.getItem('todos')) || [];\r\n  const task = {\r\n    description: todo,\r\n    completed: false,\r\n    index: list.length + 1,\r\n  };\r\n  list.push(task);\r\n  localStorage.setItem('todos', JSON.stringify(list));\r\n  showList(list);\r\n};\r\n\r\n\n\n//# sourceURL=webpack://webpack_setup/./src/task.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"addbook\": () => (/* binding */ addbook),\n/* harmony export */   \"clearCompleted\": () => (/* binding */ clearCompleted),\n/* harmony export */   \"initUI\": () => (/* binding */ initUI),\n/* harmony export */   \"showList\": () => (/* binding */ showList)\n/* harmony export */ });\n/* harmony import */ var _status_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./status.js */ \"./src/status.js\");\n\r\n\r\nconst initUI = () => {\r\n  const test = document.getElementById('test');\r\n  test.remove();\r\n  const body = document.getElementsByTagName('body')[0];\r\n  const ul = document.createElement('ul');\r\n  ul.classList = 'list-group shadow';\r\n  ul.id = 'todoList';\r\n  const li1 = document.createElement('li');\r\n  li1.classList = 'list-group-item d-flex align-items-center justify-content-between p-3';\r\n  const span = document.createElement('span');\r\n  span.innerHTML = \"Today's To Do\";\r\n  const rotate = document.createElement('i');\r\n  rotate.classList = 'fa-solid fa-rotate fa-lg cursor-pointer';\r\n  rotate.style = 'color: #000000;';\r\n  li1.appendChild(span);\r\n  li1.appendChild(rotate);\r\n  const li2 = document.createElement('li');\r\n  li2.classList = 'list-group-item d-flex align-items-start justify-content-between p-3';\r\n  const input = document.createElement('input');\r\n  input.type = 'text';\r\n  input.id = 'task';\r\n  input.classList = 'custom-input';\r\n  input.placeholder = 'Add your list ...';\r\n  li2.appendChild(input);\r\n  const addBtn = document.createElement('i');\r\n  addBtn.classList = 'fa-solid fa-arrow-turn-down fa-rotate-90 cursor-pointer';\r\n  addBtn.style = 'color: #000000;';\r\n  addBtn.id = 'add';\r\n  const parentDiv = document.createElement('div');\r\n  parentDiv.id = 'taskList';\r\n  li2.appendChild(addBtn);\r\n  ul.appendChild(li1);\r\n  ul.appendChild(li2);\r\n  ul.appendChild(parentDiv);\r\n  body.appendChild(ul);\r\n  const listForm = document.getElementById('todoList');\r\n  const completeBtn = document.createElement('li');\r\n  completeBtn.classList = 'list-group-item text-center bg-light cursor-pointer p-3';\r\n  completeBtn.innerHTML = 'Clear All Complete';\r\n  completeBtn.id = 'clearCompleted';\r\n  listForm.appendChild(completeBtn);\r\n};\r\n\r\nconst resetIndex = (list) => {\r\n  for (let i = 0; i < list.length; i += 1) {\r\n    list[i].index = i + 1;\r\n  }\r\n};\r\n\r\nconst showList = () => {\r\n  const list = JSON.parse(localStorage.getItem('todos')) || [];\r\n  const parentDiv = document.getElementById('taskList');\r\n  parentDiv.innerHTML = '';\r\n  list\r\n    .sort((a, b) => a.index - b.index)\r\n    .forEach((l) => {\r\n      const li3 = document.createElement('li');\r\n      li3.classList = 'list-group-item d-flex align-items-center justify-content-between p-3';\r\n      li3.id = `list${l.index}`;\r\n      const div = document.createElement('div');\r\n      div.classList = 'd-flex align-items-center gap-3';\r\n      const input = document.createElement('input');\r\n      input.type = 'checkbox';\r\n      input.classList = 'form-check-input';\r\n      input.id = `checkbox${l.index}`;\r\n      if (l.complete) {\r\n        input.setAttribute('checked', true);\r\n      }\r\n      div.appendChild(input);\r\n      const input2 = document.createElement('input');\r\n      input2.maxLength = 255;\r\n      input2.classList = 'custom-input';\r\n      input2.id = `edit${l.index}`;\r\n      input2.setAttribute('value', l.description);\r\n      div.appendChild(input2);\r\n      li3.appendChild(div);\r\n      const icon = document.createElement('i');\r\n      icon.classList = 'fas fa-ellipsis-v vertical-icon cursor-pointer';\r\n      icon.id = `dropdownMenuButton${l.index}`;\r\n      icon.setAttribute('data-bs-toggle', 'dropdown');\r\n      icon.setAttribute('aria-expanded', 'false');\r\n      const dropdown = document.createElement('ul');\r\n      dropdown.classList = 'dropdown-menu';\r\n      dropdown.setAttribute('aria-labelledby', `dropdownMenuButton${l.index}`);\r\n      const dropList = document.createElement('li');\r\n      dropList.classList = 'dropdown-item fa-regular fa-trash-can';\r\n      dropList.style = 'color: #000000;';\r\n      dropList.id = `remove${l.index}`;\r\n      dropdown.appendChild(dropList);\r\n      li3.appendChild(icon);\r\n      li3.appendChild(dropdown);\r\n      parentDiv.appendChild(li3);\r\n    });\r\n\r\n  list.forEach((l) => {\r\n    document\r\n      .getElementById(`remove${l.index}`)\r\n      .addEventListener('click', () => {\r\n        list.splice(list.indexOf(l), 1);\r\n        resetIndex(list);\r\n        localStorage.setItem('todos', JSON.stringify(list));\r\n        showList(list);\r\n      });\r\n  });\r\n\r\n  list.forEach((l) => {\r\n    document\r\n      .getElementById(`edit${l.index}`)\r\n      .addEventListener('change', (e) => {\r\n        list[list.indexOf(l)] = { ...l, description: e.target.value };\r\n        localStorage.setItem('todos', JSON.stringify(list));\r\n        showList(list);\r\n      });\r\n  });\r\n\r\n  list.forEach((l) => {\r\n    const checkbox = document.getElementById(`checkbox${l.index}`);\r\n    const editElement = document.getElementById(`edit${l.index}`);\r\n    checkbox.addEventListener('change', () => {\r\n      (0,_status_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(list.indexOf(l), checkbox, editElement);\r\n    });\r\n  });\r\n};\r\n\r\nconst addbook = (todo) => {\r\n  const list = JSON.parse(localStorage.getItem('todos')) || [];\r\n  if (todo.trim().length !== 0) {\r\n    const task = {\r\n      description: todo.trim(),\r\n      completed: false,\r\n      index: list.length + 1,\r\n    };\r\n    list.push(task);\r\n    localStorage.setItem('todos', JSON.stringify(list));\r\n    showList(list);\r\n  }\r\n};\r\n\r\nconst clearCompleted = () => {\r\n  let list = JSON.parse(localStorage.getItem('todos')) || [];\r\n  list = list.filter((l) => !l.completed);\r\n  resetIndex(list);\r\n  localStorage.setItem('todos', JSON.stringify(list));\r\n  showList(list);\r\n};\r\n\r\n\r\n\n\n//# sourceURL=webpack://webpack_setup/./src/task.js?");
 
 /***/ })
 
-/******/ 	});
-/************************************************************************/
-/******/ 	// The module cache
-/******/ 	var __webpack_module_cache__ = {};
-/******/ 	
-/******/ 	// The require function
-/******/ 	function __webpack_require__(moduleId) {
-/******/ 		// Check if module is in cache
-/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
-/******/ 		if (cachedModule !== undefined) {
-/******/ 			return cachedModule.exports;
-/******/ 		}
-/******/ 		// Create a new module (and put it into the cache)
-/******/ 		var module = __webpack_module_cache__[moduleId] = {
-/******/ 			id: moduleId,
-/******/ 			// no module.loaded needed
-/******/ 			exports: {}
-/******/ 		};
-/******/ 	
-/******/ 		// Execute the module function
-/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
-/******/ 	
-/******/ 		// Return the exports of the module
-/******/ 		return module.exports;
-/******/ 	}
-/******/ 	
-/************************************************************************/
-/******/ 	/* webpack/runtime/compat get default export */
-/******/ 	(() => {
-/******/ 		// getDefaultExport function for compatibility with non-harmony modules
-/******/ 		__webpack_require__.n = (module) => {
-/******/ 			var getter = module && module.__esModule ?
-/******/ 				() => (module['default']) :
-/******/ 				() => (module);
-/******/ 			__webpack_require__.d(getter, { a: getter });
-/******/ 			return getter;
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/define property getters */
-/******/ 	(() => {
-/******/ 		// define getter functions for harmony exports
-/******/ 		__webpack_require__.d = (exports, definition) => {
-/******/ 			for(var key in definition) {
-/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
-/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
-/******/ 				}
-/******/ 			}
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
-/******/ 	(() => {
-/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/make namespace object */
-/******/ 	(() => {
-/******/ 		// define __esModule on exports
-/******/ 		__webpack_require__.r = (exports) => {
-/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
-/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
-/******/ 			}
-/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/nonce */
-/******/ 	(() => {
-/******/ 		__webpack_require__.nc = undefined;
-/******/ 	})();
-/******/ 	
-/************************************************************************/
-/******/ 	
-/******/ 	// startup
-/******/ 	// Load entry module and return exports
-/******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	var __webpack_exports__ = __webpack_require__("./src/index.js");
-/******/ 	
-/******/ })()
-;
+},
+/******/ __webpack_require__ => { // webpackRuntimeModules
+/******/ var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
+/******/ var __webpack_exports__ = (__webpack_exec__("./src/index.js"));
+/******/ }
+]);
