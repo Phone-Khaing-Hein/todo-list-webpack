@@ -1,3 +1,5 @@
+import changeStatus from './status.js';
+
 const initUI = () => {
   const test = document.getElementById('test');
   test.remove();
@@ -37,6 +39,7 @@ const initUI = () => {
   const completeBtn = document.createElement('li');
   completeBtn.classList = 'list-group-item text-center bg-light cursor-pointer p-3';
   completeBtn.innerHTML = 'Clear All Complete';
+  completeBtn.id = 'clearCompleted';
   listForm.appendChild(completeBtn);
 };
 
@@ -61,8 +64,10 @@ const showList = () => {
       const input = document.createElement('input');
       input.type = 'checkbox';
       input.classList = 'form-check-input';
-      input.id = l.index;
-      input.setAttribute('selected', l.completed);
+      input.id = `checkbox${l.index}`;
+      if (l.complete) {
+        input.setAttribute('checked', true);
+      }
       div.appendChild(input);
       const input2 = document.createElement('input');
       input2.maxLength = 255;
@@ -90,19 +95,31 @@ const showList = () => {
     });
 
   list.forEach((l) => {
-    document.getElementById(`remove${l.index}`).addEventListener('click', () => {
-      list.splice(list.indexOf(l), 1);
-      resetIndex(list);
-      localStorage.setItem('todos', JSON.stringify(list));
-      showList(list);
-    });
+    document
+      .getElementById(`remove${l.index}`)
+      .addEventListener('click', () => {
+        list.splice(list.indexOf(l), 1);
+        resetIndex(list);
+        localStorage.setItem('todos', JSON.stringify(list));
+        showList(list);
+      });
   });
 
   list.forEach((l) => {
-    document.getElementById(`edit${l.index}`).addEventListener('change', (e) => {
-      list[list.indexOf(l)] = { ...l, description: e.target.value };
-      localStorage.setItem('todos', JSON.stringify(list));
-      showList(list);
+    document
+      .getElementById(`edit${l.index}`)
+      .addEventListener('change', (e) => {
+        list[list.indexOf(l)] = { ...l, description: e.target.value };
+        localStorage.setItem('todos', JSON.stringify(list));
+        showList(list);
+      });
+  });
+
+  list.forEach((l) => {
+    const checkbox = document.getElementById(`checkbox${l.index}`);
+    const editElement = document.getElementById(`edit${l.index}`);
+    checkbox.addEventListener('change', () => {
+      changeStatus(list.indexOf(l), checkbox, editElement);
     });
   });
 };
@@ -121,6 +138,14 @@ const addbook = (todo) => {
   }
 };
 
+const clearCompleted = () => {
+  let list = JSON.parse(localStorage.getItem('todos')) || [];
+  list = list.filter((l) => !l.completed);
+  resetIndex(list);
+  localStorage.setItem('todos', JSON.stringify(list));
+  showList(list);
+};
+
 export {
-  addbook, showList, initUI,
+  addbook, showList, initUI, clearCompleted,
 };
