@@ -1,6 +1,6 @@
 import './style.css';
 import {
-  addbook, showList, initUI, clearCompleted
+  addbook, showList, initUI, clearCompleted,
 } from './task.js';
 
 initUI();
