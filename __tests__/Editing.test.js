@@ -11,7 +11,6 @@ const localStorageMock = (() => {
 global.localStorage = localStorageMock;
 describe('Editing function', () => {
   it('should update the description of a task in localStorage', () => {
-    // Setup
     const tasks = [
       {
         id: 1, description: 'Task 1', completed: false, index: 1,
@@ -31,9 +30,9 @@ describe('Editing function', () => {
         closest: jest.fn(() => ({ dataset: { index: '2' } })),
       },
     };
-    // Execute
+
     Editing(event);
-    // Assert
+
     const updatedTasks = JSON.parse(localStorageMock.getItem('tasks'));
     const expectedTasks = [
       {
@@ -49,7 +48,6 @@ describe('Editing function', () => {
     expect(updatedTasks).toEqual(expectedTasks);
   });
   it('should not update localStorage if the event target is not a task description', () => {
-    // Setup
     const tasks = [
       {
         id: 1, description: 'Task 1', completed: false, index: 1,
@@ -67,9 +65,9 @@ describe('Editing function', () => {
         classList: { contains: jest.fn((className) => className !== 'task-description') },
       },
     };
-    // Execute
+
     Editing(event);
-    // Assert
+
     const updatedTasks = JSON.parse(localStorageMock.getItem('tasks'));
     expect(updatedTasks).toEqual(tasks);
   });
