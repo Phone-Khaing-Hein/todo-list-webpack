@@ -1,27 +1,35 @@
+import CheckBoxes from './modules/checkbox.js';
+import LoadTask from './modules/LoadTask.js';
+import AddTask from './modules/AddTask.js';
+import RemoveTask from './modules/RemoveTask.js';
+import Editing from './modules/Editing.js';
+import Clear from './modules/Clear.js';
 import './style.css';
-import {
-  addbook, showList, initUI, clearCompleted,
-} from './task.js';
 
-initUI();
+const toDoList = document.getElementById('todolist');
 
-const addBtn = document.getElementById('add');
-const taskInput = document.getElementById('task');
-
-addBtn.addEventListener('click', () => {
-  addbook(document.getElementById('task').value);
-  document.getElementById('task').value = '';
-});
-
-taskInput.addEventListener('keypress', (e) => {
-  if (e.key === 'Enter') {
-    addbook(document.getElementById('task').value);
-    document.getElementById('task').value = '';
+// calling addTask() when user enters
+const input = document.getElementById('add');
+input.addEventListener('keyup', (event) => {
+  event.preventDefault();
+  if (event.key === 'Enter') {
+    AddTask();
   }
 });
 
-document.getElementById('clearCompleted').addEventListener('click', () => {
-  clearCompleted();
-});
+// loading Tasks when page loads
+const tasks = JSON.parse(localStorage.getItem('tasks'));
+if (tasks) LoadTask(tasks);
 
-showList();
+// removing tasks
+toDoList.addEventListener('click', RemoveTask);
+
+// check the boxes
+toDoList.addEventListener('change', CheckBoxes);
+
+// editing the todos
+toDoList.addEventListener('keyup', Editing);
+
+// clear all completed tasks
+const clearBtn = document.getElementById('clear');
+clearBtn.addEventListener('click', Clear);

@@ -1,22 +1,89 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;200;300;400;500;600;700&display=swap");
+
 body {
-  display: flex;
-  justify-content: center;
+  font-family: monospace;
+  box-sizing: border-box;
 }
 
-#todoList {
-  margin-top: 100px;
-  width: 45%;
+.todolist-container {
+  width: 700px;
+  margin: 4rem auto;
 }
 
-.custom-input {
+.addList:focus {
+  outline: none;
+  box-shadow: none;
+  border-color: #ced4da;
+}
+
+.btn:focus,
+.btn:active {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.arrow {
+  width: 10px;
+  height: 10px;
+}
+
+input::placeholder {
+  font-size: 16px;
+  color: #999;
+  font-style: italic;
+}
+
+input[type="checkbox"] {
+  transform: scale(1.5);
+}
+
+.hidden {
+  display: none;
+}
+
+.task-description {
+  outline: none;
+  box-shadow: none;
   border: none;
+}
+
+.task-description:focus,
+.task-description:active {
+  outline: none;
+  box-shadow: none;
+  border: none;
+}
+
+.inputs {
+  display: flex;
+  align-items: center;
+  gap: 5px;
   width: 90%;
 }
 
-.custom-input:focus {
-  outline: none;
+.inputs .task-description {
+  width: 95%;
 }
 
-.cursor-pointer {
-  cursor: pointer;
+.buttons {
+  flex: 0.5;
+  display: flex;
+  justify-content: flex-end;
+}
+
+#clear {
+  outline: none;
+  box-shadow: none;
+  border: none;
+  background-color: #fff;
+}
+
+#clear:active {
+  outline: none;
+  box-shadow: none;
+  border: none;
+}
+
+input[type="checkbox"]:checked + input {
+  text-decoration: line-through;
 }
