@@ -21,10 +21,10 @@ afterEach(() => {
   delete global.document;
 });
 describe('AddTask', () => {
-  it('should add a new task to the list and update local storage', () => {
+  test('should add a new task to the list and update local storage', () => {
     // arrange
-    const addInput = { value: 'New task' };
-    document.getElementById = jest.fn().mockReturnValue(addInput);
+    const inputValue = { value: 'Test Task' };
+    document.getElementById = jest.fn().mockReturnValue(inputValue);
     const localStorageMock = {
       getItem: jest.fn().mockReturnValue('[]'),
       setItem: jest.fn(),
@@ -37,11 +37,11 @@ describe('AddTask', () => {
     expect(localStorageMock.setItem).toHaveBeenCalledTimes(1);
     expect(localStorageMock.setItem).toHaveBeenCalledWith(
       'tasks',
-      JSON.stringify([{ description: 'New task', completed: false, index: 1 }]),
+      JSON.stringify([{ description: 'Test Task', completed: false, index: 1 }]),
     );
     expect(LoadTask).toHaveBeenCalledTimes(1);
     expect(LoadTask).toHaveBeenCalledWith([
-      { description: 'New task', completed: false, index: 1 },
+      { description: 'Test Task', completed: false, index: 1 },
     ]);
   });
 });
