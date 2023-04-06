@@ -22,7 +22,7 @@ afterEach(() => {
 });
 describe('AddTask', () => {
   test('should add a new task to the list and update local storage', () => {
-    // arrange
+    // arrange the input values
     const inputValue = { value: 'Test Task' };
     document.getElementById = jest.fn().mockReturnValue(inputValue);
     const localStorageMock = {
